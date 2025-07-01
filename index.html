@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional portfolio of Muhammad Awais Mustafa, Business Analyst specializing in Data, AI and Analytics">
+  <title>Muhammad Awais Mustafa | Business Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --accent: #3b82f6;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --header-bg: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+
+    [data-theme="dark"] {
+      --light: #0f172a;
+      --dark: #f8fafc;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --header-bg: linear-gradient(135deg, #0f172a, #020617);
+      --gray: #94a3b8;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: var(--header-bg);
+      color: white;
+      padding: 4rem 2rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--light);
+      transform: skewY(-2deg);
+      z-index: 1;
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    nav {
+      background: var(--card-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover, nav a.active {
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.1);
+    }
+    
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .resume-btn {
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .resume-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    #theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.2rem;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #theme-toggle:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+    
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .skill-category h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .skill-category ul {
+      list-style: none;
+    }
+    
+    .skill-category li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-color);
+    }
+    
+    .skill-category li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .certifications {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .certification-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .certification-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .certification-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+    
+    .certification-card .issuer {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .certification-card p {
+      color: var(--gray);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      position: relative;
+    }
+    
+    .project-img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-content h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .project-content p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-tag {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .project-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .education-item {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+    }
+    
+    .education-item h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .education-item .date {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .education-item .achievements {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .education-item .achievements ul {
+      list-style-position: inside;
+    }
+    
+    .education-item .achievements li {
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .contact-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(37, 99, 235, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .contact-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+    
+    footer {
+      background: var(--header-bg);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .header-controls {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="profile.jpg" alt="Muhammad Awais Mustafa" class="profile-img">
+    <h1>Muhammad Awais Mustafa</h1>
+    <p class="tagline">Business Analyst | Data Scientist | AI Enthusiast</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/muhammad-awais-mustafa-202183290" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/Awais-Analyst" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:awaissindhu576@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+923194370029"><i class="fas fa-phone"></i></a>
+    </div>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="header-controls">
+      <a href="resume.pdf" download class="resume-btn">Download Resume</a>
+      <button id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div>
+        <p>I am a results-driven Business Analyst with strong expertise in transforming complex data into actionable insights that drive business growth. With hands-on experience in machine learning, automation, and data visualization, I bridge the gap between technical teams and business stakeholders.</p>
+        <p>My passion lies in leveraging cutting-edge technologies like AI and predictive analytics to solve real-world business challenges. I thrive in dynamic environments where I can apply my analytical skills to create measurable impact.</p>
+      </div>
+      <div>
+        <p>Currently pursuing my Bachelor's in Business Analytics, I've consistently ranked among top performers while actively working on projects that demonstrate my ability to deliver value through data-driven solutions.</p>
+        <p>When I'm not analyzing data, you can find me exploring new AI advancements, contributing to open-source projects, or mentoring aspiring data professionals.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="skills">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Data Analysis & Visualization</h3>
+        <ul>
+          <li>Python (Pandas, NumPy, Matplotlib)</li>
+          <li>SQL (Advanced Queries, Optimization)</li>
+          <li>Power BI & Tableau</li>
+          <li>Excel (Advanced Formulas, VBA)</li>
+          <li>SPSS & Statistical Analysis</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Machine Learning & AI</h3>
+        <ul>
+          <li>TensorFlow & Keras</li>
+          <li>Scikit-learn</li>
+          <li>Neural Networks</li>
+          <li>Natural Language Processing</li>
+          <li>Prompt Engineering</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Business & Tools</h3>
+        <ul>
+          <li>Business Process Modeling</li>
+          <li>Requirements Analysis</li>
+          <li>SAP Fundamentals</li>
+          <li>Agile Methodologies</li>
+          <li>Project Management</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="certifications">
+      <div class="certification-card">
+        <h3>Coding and Automation for Data Analysis with Generative AI</h3>
+        <p class="issuer">Microsoft</p>
+        <p>Mastered automation techniques using AI to streamline data analysis workflows</p>
+      </div>
+      <div class="certification-card">
+        <h3>Data Analysis with Python</h3>
+        <p class="issuer">IBM</p>
+        <p>Advanced data manipulation and analysis using Python libraries</p>
+      </div>
+      <div class="certification-card">
+        <h3>Predictive Modeling and Analytics</h3>
+        <p class="issuer">University of Colorado Boulder</p>
+        <p>Developed expertise in building predictive models for business applications</p>
+      </div>
+      <div class="certification-card">
+        <h3>Supervised Machine Learning: Regression and Classification</h3>
+        <p class="issuer">DeepLearning.AI</p>
+        <p>Implemented various ML algorithms for real-world problem solving</p>
+      </div>
+      <div class="certification-card">
+        <h3>Advanced Prompt Engineering for Everyone</h3>
+        <p class="issuer">Vanderbilt University</p>
+        <p>Specialized techniques for optimizing AI model interactions</p>
+      </div>
+      <div class="certification-card">
+        <h3>Business Intelligence and Data Analytics</h3>
+        <p class="issuer">Macquarie University</p>
+        <p>Transformed raw data into strategic business insights</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('weather-project.jpg');">
+          <i class="fas fa-cloud-sun-rain" style="z-index: 2;"></i>
+        </div>
+        <div class="project-content">
+          <h3>Weather Prediction App</h3>
+          <p>ML model achieving 92% accuracy in precipitation forecasting using historical weather data</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">TensorFlow</span>
+            <span class="project-tag">Neural Networks</span>
+          </div>
+          <div class="project-links">
+            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <a href="#"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('house-project.jpg');">
+          <i class="fas fa-home" style="z-index: 2;"></i>
+        </div>
+        <div class="project-content">
+          <h3>House Price Prediction</h3>
+          <p>Linear regression model predicting real estate prices with 87% accuracy across 10,000+ listings</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Scikit-learn</span>
+            <span class="project-tag">Data Visualization</span>
+          </div>
+          <div class="project-links">
+            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <a href="#"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('sentiment-project.jpg');">
+          <i class="fas fa-comment-dots" style="z-index: 2;"></i>
+        </div>
+        <div class="project-content">
+          <h3>Sentiment Analysis</h3>
+          <p>NLP system classifying movie reviews with 89% accuracy using BERT and NLTK</p>
+          <div class="project-tags">
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Transformers</span>
+          </div>
+          <div class="project-links">
+            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <a href="#"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="education-item">
+      <h3>Bachelor's in Business Analytics</h3>
+      <p class="date">2022 - Present | FAST National University of Computer and Emerging Science</p>
+      <p>Comprehensive program covering data science, business intelligence, and analytics methodologies with hands-on projects</p>
+      <div class="achievements">
+        <h4>Key Achievements:</h4>
+        <ul>
+          <li>3rd Position in 3rd and 5th Semester</li>
+          <li>Dean's List Honors (Multiple Semesters)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Email</h3>
+        <a href="mailto:awaissindhu576@gmail.com">awaissindhu576@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h3>Phone</h3>
+        <a href="tel:+923194370029">+92 319 4370029</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/muhammad-awais-mustafa-202183290" target="_blank">muhammad-awais-mustafa</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p>© 2023 Muhammad Awais Mustafa. All rights reserved.</p>
+    <p>Designed and built with ❤️ by Awais</p>
+  </footer>
+
+  <script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or use preferred color scheme
+    const currentTheme = localStorage.getItem('theme') || 
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    
+    // Apply the current theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update icon based on current theme
+    if (currentTheme === 'dark') {
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      if (newTheme === 'dark') {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
+    
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      if (anchor.getAttribute('href').startsWith('#')) {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // Update active class
+          document.querySelectorAll('nav a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        });
+      }
+    });
+    
+    // Update active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
