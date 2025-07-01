@@ -7,7 +7,9 @@
   <title>Muhammad Awais Mustafa | Business Analyst Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    /* Base styles and variables */
     :root {
       --primary: #2563eb;
       --dark: #1e293b;
@@ -42,6 +44,7 @@
       line-height: 1.6;
     }
     
+    /* Header with particles */
     header {
       background: var(--header-bg);
       color: white;
@@ -49,6 +52,20 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
+    
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 1;
     }
     
     header::after {
@@ -83,6 +100,21 @@
       font-size: 1.2rem;
       opacity: 0.9;
       margin-bottom: 1.5rem;
+      min-height: 60px;
+    }
+    
+    .typewriter {
+      display: inline-block;
+    }
+    
+    .typewriter-text {
+      border-right: 2px solid white;
+      animation: blink 0.7s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: white; }
     }
     
     .social-links {
@@ -109,6 +141,7 @@
       transform: translateY(-3px);
     }
     
+    /* Navigation */
     nav {
       background: var(--card-bg);
       padding: 1rem 2rem;
@@ -183,6 +216,7 @@
       background: rgba(37, 99, 235, 0.1);
     }
     
+    /* Sections */
     section {
       max-width: 1000px;
       margin: 0 auto;
@@ -208,6 +242,7 @@
       border-radius: 2px;
     }
     
+    /* About Section */
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -215,6 +250,7 @@
       align-items: center;
     }
     
+    /* Skills Section with Progress Bars */
     .skills-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -229,28 +265,44 @@
     }
     
     .skill-category h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: var(--primary);
     }
     
-    .skill-category ul {
-      list-style: none;
+    .skill-item {
+      margin-bottom: 1.5rem;
     }
     
-    .skill-category li {
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 0.5rem;
-      position: relative;
-      padding-left: 1.5rem;
-      color: var(--text-color);
     }
     
-    .skill-category li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
+    .skill-name {
+      font-weight: 600;
     }
     
+    .skill-percent {
+      color: var(--gray);
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: rgba(37, 99, 235, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      width: 0;
+      transition: width 1.5s ease;
+    }
+    
+    /* Certifications */
     .certifications {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -286,6 +338,7 @@
       color: var(--gray);
     }
     
+    /* Projects with Interactive Previews */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -298,6 +351,7 @@
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
+      position: relative;
     }
     
     .project-card:hover {
@@ -305,26 +359,52 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     
-    .project-img {
+    .project-img-container {
       height: 180px;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
       position: relative;
+      overflow: hidden;
     }
     
-    .project-img::after {
-      content: '';
+    .project-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-img {
+      transform: scale(1.1);
+    }
+    
+    .project-preview {
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover .project-preview {
+      opacity: 1;
+    }
+    
+    .preview-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     
     .project-content {
@@ -373,40 +453,125 @@
       gap: 0.3rem;
     }
     
-    .education-item {
+    /* Education Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--card-bg);
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
       background: var(--card-bg);
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      margin-bottom: 1.5rem;
     }
     
-    .education-item h3 {
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 600;
       margin-bottom: 0.5rem;
-      color: var(--text-color);
     }
     
-    .education-item .date {
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .testimonial-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      font-size: 4rem;
+      color: rgba(37, 99, 235, 0.1);
+      top: 10px;
+      left: 10px;
+      line-height: 1;
+    }
+    
+    .testimonial-content {
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .author-info h4 {
+      margin-bottom: 0.2rem;
+    }
+    
+    .author-info p {
       color: var(--gray);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
     }
     
-    .education-item .achievements {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    
-    .education-item .achievements ul {
-      list-style-position: inside;
-    }
-    
-    .education-item .achievements li {
-      color: var(--text-color);
-      margin-bottom: 0.5rem;
-    }
-    
+    /* Contact Form */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -453,6 +618,159 @@
       text-decoration: underline;
     }
     
+    .contact-form {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      background: var(--light);
+      color: var(--text-color);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .submit-btn:hover {
+      background: #1d4ed8;
+    }
+    
+    /* Chatbot */
+    .chatbot-toggler {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      border: none;
+    }
+    
+    .chatbot-container {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transform: scale(0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .chatbot-container.active {
+      transform: scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .chatbot-header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .close-chatbot {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    
+    .chatbot-messages {
+      height: 300px;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    
+    .message {
+      margin-bottom: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+    
+    .bot-message {
+      background: rgba(37, 99, 235, 0.1);
+      margin-right: auto;
+    }
+    
+    .user-message {
+      background: var(--primary);
+      color: white;
+      margin-left: auto;
+    }
+    
+    .chatbot-input {
+      display: flex;
+      padding: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .chatbot-input input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+    
+    .chatbot-input button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 1rem;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    
+    /* Footer */
     footer {
       background: var(--header-bg);
       color: white;
@@ -461,6 +779,7 @@
       margin-top: 3rem;
     }
     
+    /* Responsive */
     @media (max-width: 768px) {
       .about-content {
         grid-template-columns: 1fr;
@@ -481,19 +800,49 @@
         width: 100%;
         justify-content: center;
       }
+      
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .left::after, .right::after {
+        left: 21px;
+      }
+      
+      .right {
+        left: 0;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Particles Background -->
   <header>
-    <img src="profile.jpg" alt="Muhammad Awais Mustafa" class="profile-img">
-    <h1>Muhammad Awais Mustafa</h1>
-    <p class="tagline">Business Analyst | Data Scientist | AI Enthusiast</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/muhammad-awais-mustafa-202183290" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://github.com/Awais-Analyst" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="mailto:awaissindhu576@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+923194370029"><i class="fas fa-phone"></i></a>
+    <div id="particles-js"></div>
+    <div class="header-content">
+      <img src="profile.jpg" alt="Muhammad Awais Mustafa" class="profile-img">
+      <h1>Muhammad Awais Mustafa</h1>
+      <p class="tagline">
+        <span class="typewriter">
+          <span class="typewriter-text" id="typewriter"></span>
+        </span>
+      </p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/muhammad-awais-mustafa-202183290" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/Awais-Analyst" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:awaissindhu576@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+923194370029"><i class="fas fa-phone"></i></a>
+      </div>
     </div>
   </header>
   
@@ -504,6 +853,7 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="header-controls">
@@ -514,7 +864,7 @@
     </div>
   </nav>
   
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2 class="section-title">About Me</h2>
     <div class="about-content">
       <div>
@@ -528,43 +878,130 @@
     </div>
   </section>
   
-  <section id="skills">
+  <section id="skills" data-aos="fade-up">
     <h2 class="section-title">Technical Skills</h2>
     <div class="skills-container">
       <div class="skill-category">
         <h3>Data Analysis & Visualization</h3>
-        <ul>
-          <li>Python (Pandas, NumPy, Matplotlib)</li>
-          <li>SQL (Advanced Queries, Optimization)</li>
-          <li>Power BI & Tableau</li>
-          <li>Excel (Advanced Formulas, VBA)</li>
-          <li>SPSS & Statistical Analysis</li>
-        </ul>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Python</span>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">SQL</span>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Power BI</span>
+            <span class="skill-percent">80%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="80"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Excel</span>
+            <span class="skill-percent">95%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="95"></div>
+          </div>
+        </div>
       </div>
       <div class="skill-category">
         <h3>Machine Learning & AI</h3>
-        <ul>
-          <li>TensorFlow & Keras</li>
-          <li>Scikit-learn</li>
-          <li>Neural Networks</li>
-          <li>Natural Language Processing</li>
-          <li>Prompt Engineering</li>
-        </ul>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">TensorFlow</span>
+            <span class="skill-percent">80%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="80"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Scikit-learn</span>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Neural Networks</span>
+            <span class="skill-percent">75%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="75"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">NLP</span>
+            <span class="skill-percent">70%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="70"></div>
+          </div>
+        </div>
       </div>
       <div class="skill-category">
         <h3>Business & Tools</h3>
-        <ul>
-          <li>Business Process Modeling</li>
-          <li>Requirements Analysis</li>
-          <li>SAP Fundamentals</li>
-          <li>Agile Methodologies</li>
-          <li>Project Management</li>
-        </ul>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Business Analysis</span>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">SAP</span>
+            <span class="skill-percent">70%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="70"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Agile</span>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">Project Management</span>
+            <span class="skill-percent">80%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" data-width="80"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   
-  <section id="certifications">
+  <section id="certifications" data-aos="fade-up">
     <h2 class="section-title">Certifications</h2>
     <div class="certifications">
       <div class="certification-card">
@@ -600,12 +1037,17 @@
     </div>
   </section>
   
-  <section id="projects">
+  <section id="projects" data-aos="fade-up">
     <h2 class="section-title">Featured Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-img" style="background-image: url('weather-project.jpg');">
-          <i class="fas fa-cloud-sun-rain" style="z-index: 2;"></i>
+        <div class="project-img-container">
+          <img src="weather-project.jpg" alt="Weather Prediction App" class="project-img">
+          <div class="project-preview">
+            <button class="preview-btn">
+              <i class="fas fa-play"></i> Watch Demo
+            </button>
+          </div>
         </div>
         <div class="project-content">
           <h3>Weather Prediction App</h3>
@@ -622,8 +1064,13 @@
         </div>
       </div>
       <div class="project-card">
-        <div class="project-img" style="background-image: url('house-project.jpg');">
-          <i class="fas fa-home" style="z-index: 2;"></i>
+        <div class="project-img-container">
+          <img src="house-project.jpg" alt="House Price Prediction" class="project-img">
+          <div class="project-preview">
+            <button class="preview-btn">
+              <i class="fas fa-play"></i> Watch Demo
+            </button>
+          </div>
         </div>
         <div class="project-content">
           <h3>House Price Prediction</h3>
@@ -640,8 +1087,13 @@
         </div>
       </div>
       <div class="project-card">
-        <div class="project-img" style="background-image: url('sentiment-project.jpg');">
-          <i class="fas fa-comment-dots" style="z-index: 2;"></i>
+        <div class="project-img-container">
+          <img src="sentiment-project.jpg" alt="Sentiment Analysis" class="project-img">
+          <div class="project-preview">
+            <button class="preview-btn">
+              <i class="fas fa-play"></i> Watch Demo
+            </button>
+          </div>
         </div>
         <div class="project-content">
           <h3>Sentiment Analysis</h3>
@@ -660,126 +1112,13 @@
     </div>
   </section>
   
-  <section id="education">
+  <section id="education" data-aos="fade-up">
     <h2 class="section-title">Education</h2>
-    <div class="education-item">
-      <h3>Bachelor's in Business Analytics</h3>
-      <p class="date">2022 - Present | FAST National University of Computer and Emerging Science</p>
-      <p>Comprehensive program covering data science, business intelligence, and analytics methodologies with hands-on projects</p>
-      <div class="achievements">
-        <h4>Key Achievements:</h4>
-        <ul>
-          <li>3rd Position in 3rd and 5th Semester</li>
-          <li>Dean's List Honors (Multiple Semesters)</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  
-  <section id="contact">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <h3>Email</h3>
-        <a href="mailto:awaissindhu576@gmail.com">awaissindhu576@gmail.com</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">
-          <i class="fas fa-phone"></i>
-        </div>
-        <h3>Phone</h3>
-        <a href="tel:+923194370029">+92 319 4370029</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">
-          <i class="fab fa-linkedin-in"></i>
-        </div>
-        <h3>LinkedIn</h3>
-        <a href="https://www.linkedin.com/in/muhammad-awais-mustafa-202183290" target="_blank">muhammad-awais-mustafa</a>
-      </div>
-    </div>
-  </section>
-  
-  <footer>
-    <p>© 2023 Muhammad Awais Mustafa. All rights reserved.</p>
-    <p>Designed and built with ❤️ by Awais</p>
-  </footer>
-
-  <script>
-    // Theme Toggle Functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    
-    // Check for saved theme preference or use preferred color scheme
-    const currentTheme = localStorage.getItem('theme') || 
-                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    
-    // Apply the current theme
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    
-    // Update icon based on current theme
-    if (currentTheme === 'dark') {
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-    
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      if (newTheme === 'dark') {
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-      } else {
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
-      }
-    });
-    
-    // Smooth scrolling for navigation
-    document.querySelectorAll('nav a').forEach(anchor => {
-      if (anchor.getAttribute('href').startsWith('#')) {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-          
-          // Update active class
-          document.querySelectorAll('nav a').forEach(link => {
-            link.classList.remove('active');
-          });
-          this.classList.add('active');
-        });
-      }
-    });
-    
-    // Update active nav link on scroll
-    const sections = document.querySelectorAll('section');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= sectionTop - 200) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <div class="timeline-date">2021 - Present</div>
+          <h3>Bachelor's in Business Analytics</h3>
+          <p>FAST (Foundation for Advancement of Science and Technology)</p>
+          <ul>
+            <li>
