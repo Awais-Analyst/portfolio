@@ -139,8 +139,6 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       z-index: 100;
       display: flex;
-
-
       justify-content: space-between;
       align-items: center;
     }
@@ -305,8 +303,6 @@
     }
     
     .certification-card:hover {
-     .ttf
-
       transform: translateY(-5px);
     }
     
@@ -420,7 +416,9 @@
     
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding
+
+-left: 2rem;
     }
 
     .timeline::before {
@@ -565,7 +563,7 @@
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       max-width: 500px;
-      margin: 0 auto;
+      margin: 2rem auto 0;
     }
 
     .contact-form input,
@@ -594,6 +592,13 @@
     .contact-form button:hover {
       background: #1d4ed8;
       transform: translateY(-2px);
+    }
+
+    .contact-form p {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
     }
     
     footer {
@@ -654,9 +659,13 @@
   <header>
     <img src="profile.jpg" alt="Muhammad Awais Mustafa" class="profile-img" data-aos="fade-down">
     <h1 data-aos="fade-up">Muhammad Awais Mustafa</h1>
+   军人
+
     <p class="tagline" data-aos="fade-up" data-aos-delay="100">
       <span class="typewriter"></span>
     </p>
+    <div沒
+
     <div class="social-links" data-aos="fade-up" data-aos-delay="200">
       <a href="https://www.linkedin.com/in/muhammad-awais-mustafa-202183290" target="_blank"><i class="fab fa-linkedin-in"></i></a>
       <a href="https://github.com/Awais-Analyst" target="_blank"><i class="fab fa-github"></i></a>
@@ -826,22 +835,41 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <section id="education" data-aos="fade-up">
-    <h2 class="section-title">Education</h2>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="project-img" style="background-image: url('resume-ranking.jpg');">
+          <i class="fas fa-file-alt" style="z-index: 2;"></i>
+        </div>
+        <div class="project-content">
+          <h3>HR Resume Ranking System</h3>
+          <p>Automated resume ranking system for HR, scoring resumes based on skills and experience with 90% efficiency</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">Automation</span>
+          </div>
+          <div class="project-links">
+            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <a href="#"><i class="fab fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="project-img" style="background-image: url('stock-market.jpg');">
+          <i class="fas fa-chart-line" style="z-index: 2;"></i>
+        </div>
+        <div class="project-content">
+          <h3>Stock Market Analysis</h3>
+          <p>Excel section-title="Education">Education</h2>
     <div class="timeline">
       <div class="education-item">
         <h3>Bachelor's in Business Analytics</h3>
-        <p class="date">2021 - Present | FAST (Foundation for Advancement of Science and Technology)</p>
+        <p class="date">2021 - Present | FAST National University of Computer and Emerging Sciences</p>
         <p>Comprehensive program covering data science, business intelligence, and analytics methodologies with hands-on projects</p>
         <div class="achievements">
           <h4>Key Achievements:</h4>
           <ul>
             <li>3rd Position in 3rd and 5th Semester</li>
             <li>Dean's List Honors (Multiple Semesters)</li>
-            <li>Published research on AI applications in business</li>
           </ul>
         </div>
       </div>
@@ -898,6 +926,7 @@
         <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
+      <p>Drop your message, and I'll get back to you soon!</p>
     </div>
   </section>
   
